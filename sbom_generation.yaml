@@ -11,6 +11,9 @@ shell: bash
 
 steps:
   - type: Command
+    name: "php version"
+    command: php -v
+  - type: Command
     name: "which directory "
     command: pwd
   - type: Command
