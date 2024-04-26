@@ -24,7 +24,7 @@ steps:
     command: npm install -g @cyclonedx/cdxgen
   - type: Command
     name: "run cdxgen"
-    command: cdxgen -o artifactSBOM.json --spec-version=1.4
+    command: cdxgen -t php -o artifactSBOM.json --spec-version 1.4
 
 outputArtifacts:
   - name: artifactSBOM
