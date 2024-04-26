@@ -17,23 +17,15 @@ steps:
     name: "which directory "
     command: pwd
   - type: Command
-    name: "download composer"
-    command: wget https://getcomposer.org/installer -O composer-setup.php
+    name: "download cdxgen"
+    command: npm install -g @cyclonedx/cdxgen
   - type: Command
-    name: "make the script executable"
-    command: chmod +x composer-setup.php
+    name: "download cdxgen"
+    command: npm install -g @cyclonedx/cdxgen
   - type: Command
-    name: "Install composer"
-    command: php composer-setup.php
-  - type: Command
-    name: "configure plugins of cyclonedx-php-composer"
-    command: php composer.phar config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
-  - type: Command
-    name: "install the plugin"
-    command: php composer.phar require --dev cyclonedx/cyclonedx-php-composer
-  - type: Command
-    name: "run the plugin"
-    command: php composer.phar CycloneDX:make-sbom --output-format=JSON --output-file=artifactSBOM.json
+    name: "run cdxgen"
+    command: cdxgen -o artifactSBOM.json --spec-version=1.4
+
 outputArtifacts:
   - name: artifactSBOM
     type: BINARY
