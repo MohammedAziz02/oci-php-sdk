@@ -18,7 +18,10 @@ steps:
     command: pwd
   - type: Command
     name: "download composer"
-    command: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    command: wget https://getcomposer.org/installer -O composer-setup.php
+  - type: Command
+    name: "make the script executable"
+    command: chmod +x composer-setup.php
   - type: Command
     name: "Install composer"
     command: php composer-setup.php
